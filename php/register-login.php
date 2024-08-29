@@ -1,4 +1,22 @@
+<?php
 
+$config = include('config.php');
+
+$servername = $config['servername'];
+$username = $config['username'];
+$password = $config['password'];
+$dbname = $config['dbname'];
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error){
+    die("Connection Failed: " . $conn->connection_error);
+}
+
+echo "Connected successfully";
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
