@@ -13,8 +13,6 @@ if($conn->connect_error){
     die("Connection Failed: " . $conn->connection_error);
 }
 
-echo "Connected successfully";
-
 
 ?>
 
@@ -26,8 +24,8 @@ echo "Connected successfully";
     <title>Register or Login</title>
 </head>
 <body>
-    <div id="container">
-        <div id ="register-form" style="display: none;">
+    <article id="container">
+        <section id ="register-form" style="display: none;">
             <h2>Register Account</h2>
             <form  method="POST" action="">
                 <div class="input-group">
@@ -52,15 +50,14 @@ echo "Connected successfully";
                 </div>
                 <input type="submit" class="btn" value="Sign Up" name="SignUp">                
 
-                </form>
+            </form>
                 <h6>-----Or-----</h6>
-
                 <button id="SignInButton">Sign In</button>   
 
-        </div>
+        </section>
 
 
-        <div id="login-form">
+        <section id="login-form">
             <h2>Login</h2>
             <form method="POST" action="">
                 <div class="input-group">
@@ -73,14 +70,14 @@ echo "Connected successfully";
                 </div>
                 <input type="submit" class="btn" value="Sign In" name="SignIn">
                 </form>
+                
                 <h6>-----Or-----</h6>
-
                 <button id="SignUpButton">Sign Up</button>   
-            </div>
+        </section>
 
              
 
-    </div>
+    </article>
 </body>
     <script src="../public/register-login.js"></script>
 </html>

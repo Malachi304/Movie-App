@@ -13,7 +13,7 @@ is also being worked on for a class.
 Php, mysql
 
 ### Enviroment
-Visual Std Code, mysql workbench, extensions: live server, mysql tools
+Visual Std Code, mysql workbench, XAMPP (apache) ,extensions: live server, mysql tools
 
 ### Base Functionality
 The aim is to utalize a music API, to store user selected albums in a sql database. Users will be able to store/share their favorite (Or least favorite) albums to their page, and give their own personal reviews and opinions. 
