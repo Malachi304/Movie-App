@@ -40,7 +40,7 @@
 
             </form>
                 <h6>-----Or-----</h6>
-                <button id="SignInButton">Sign In</button>   
+                <button id="LogInButton">Log In</button>   
 
         </section>
 
@@ -56,7 +56,7 @@
                     <input type="password" name="password" id="password" placeholder="Enter Password" required>
                     <label for="passwprd">Enter Password</label>
                 </div>
-                <input type="submit" class="btn" value="Sign In" name="SignIn">
+                <input type="submit" class="btn" value="Log In" name="LogIn">
                 </form>
                 
                 <h6>-----Or-----</h6>
