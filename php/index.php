@@ -1,20 +1,3 @@
-<?php
-
-$config = include('config.php');
-
-$servername = $config['servername'];
-$username = $config['username'];
-$password = $config['password'];
-$dbname = $config['dbname'];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if($conn->connect_error){
-    die("Connection Failed: " . $conn->connection_error);
-}
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +10,16 @@ if($conn->connect_error){
     <article id="container">
         <section id ="register-form" style="display: none;">
             <h2>Register Account</h2>
-            <form  method="POST" action="">
+            <form  method="post" action="register.php">
                 <div class="input-group">
                     <input type="text" name="fname" id="fname" placeholder="First Name" required>
                     <label for="fname">First Name</label>
                 </div>
+                <div class="input-group">
+                    <input type="text" name="uname" id="uname" placeholder="Username" required>
+                    <label for="uname">Username</label>
+                </div>
+                
                 <div class="input-group">
                     <input type="text" name="lname" id="lname" placeholder="Last Name" required>
                     <label for="lname">Last Name</label>
@@ -59,7 +47,7 @@ if($conn->connect_error){
 
         <section id="login-form">
             <h2>Login</h2>
-            <form method="POST" action="">
+            <form method="post" action="login.php">
                 <div class="input-group">
                     <input type="email" name="email" id="email" placeholder="Email@gmail.com" required>
                     <label for="email">Email</label>
