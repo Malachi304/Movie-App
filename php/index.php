@@ -71,5 +71,5 @@
 
     </article>
 </body>
-    <script src="../public/register-login.js"></script>
+    <script src="../assets/register-login.js"></script>
 </html>

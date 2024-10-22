@@ -1,12 +1,11 @@
 <?php
 # NOTE : NEED TO FIX POSSIBLE SQL INJECTION ISSUES
 
-
 # Connect to DB
 include 'connect.php';
 
 
-# Add to DB
+# Handle sign up post request
 if (isset($_POST['SignUp'])){
     $firstName=$_POST['fname'];
     $lastName=$_POST['lname'];
@@ -17,11 +16,13 @@ if (isset($_POST['SignUp'])){
     # Hash password before adding to DB
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
+    // Check if email already exists
     $check_email = "SELECT * FROM users where email='$email'";
     $result=$conn->query($check_email);
     if($result->num_rows>0){
         echo "Email Address Aldreay Exists";
     }
+    // Insert user data
     else{
         $insertQuery = "INSERT INTO users(first_name, last_name,user_name,email,password) VALUES ('$firstName', '$lastName', '$userName', '$email','$hashedPassword')";
         if($conn->query($insertQuery)==TRUE){
