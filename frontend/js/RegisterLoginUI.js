@@ -1,3 +1,6 @@
+// This hides/ displays the register and login forms based
+
+
 const LogInButton = document.getElementById("LogInButton");
 const SignUpButton = document.getElementById("SignUpButton");
 const user_name_login_btn = document.getElementById("user-name-login-btn");

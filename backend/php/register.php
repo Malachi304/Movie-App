@@ -9,10 +9,10 @@ include 'connect.php';
 if (isset($_POST['SignUp'])){
     $firstName=$_POST['fname'];
     $lastName=$_POST['lname'];
-    $userName=$_POST['uname'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-
+    $userName=$_POST['reg_uname'];
+    $email=$_POST['reg_email'];
+    $password=$_POST['reg_password'];
+    echo "Email";
     # Hash password before adding to DB
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     

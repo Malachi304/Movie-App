@@ -13,7 +13,6 @@ if (isset($_POST['LogIn'])){
     $check_email = "SELECT * FROM users where email='$email'";
     $check_password = "SELECT * FROM users where email='$password'";
 
-
 }
 
 ?>
