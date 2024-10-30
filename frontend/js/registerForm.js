@@ -12,7 +12,7 @@ function submit_registerForm(){
             console.log(key +' '+ value);
         }
 //backend\php\register.php
-        fetch('backend/php/register.php',{
+        fetch('../../backend/php/register.php',{
             method:'POST',
             body: formdata
     

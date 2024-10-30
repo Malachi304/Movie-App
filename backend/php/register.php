@@ -24,9 +24,10 @@ if (isset($_POST['SignUp'])){
     }
     // Insert user data
     else{
-        $insertQuery = "INSERT INTO users(first_name, last_name,user_name,email,password) VALUES ('$firstName', '$lastName', '$userName', '$email','$hashedPassword')";
+        $insertQuery = "INSERT INTO users(first_name, last_name,user_name,email,password) 
+        VALUES ('$firstName', '$lastName', '$userName', '$email','$hashedPassword')";
         if($conn->query($insertQuery)==TRUE){
-            header("location: login.php");
+            header("location: ../frontend/pages/index.html");
             echo "Account Created";
         }
         else{

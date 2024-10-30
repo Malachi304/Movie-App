@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Account</title>
+</head>
+<body>
+        <section id ="register-form">
+            <h2>Register Account</h2>
+            <form  id="registerForm">
+                <div class="input-group">
+                    <input type="text" name="fname" id="reg_first_name" placeholder="" required>
+                    <label for="reg_first_name">First Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="reg_uname" id="reg_user_name" placeholder="" required>
+                    <label for="reg_user_name">Username</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" name="lname" id="reg_last_name" placeholder="" required>
+                    <label for="reg_last_name">Last Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="reg_email" id="reg_user_email" placeholder="Email@gmail.com" required>
+                    <label for="reg_user_email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="reg_password" id="reg_user_password" placeholder="" required >
+                    <label for="reg_user_password">Set Password</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="" id="verify_password" placeholder="" required>
+                    <label for="verify_password">Retype Password</label>
+                </div>
+                <input type="submit" class="btn" value="Sign Up" name="SignUp">                
+
+            </form>
+                <h6>-----Or-----</h6>
+                <button id="LogInButton">Log In</button>
+                
+                <div id="register-message"></div>
+
+        </section>
+
+        <script src="../js/registerForm.js"></script>
+
+</body>
+</html>
