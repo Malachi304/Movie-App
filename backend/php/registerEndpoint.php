@@ -4,6 +4,7 @@
 # Connect to DB
 include 'connect.php';
 
+echo "Register check";
 
 # Handle sign up post request
 if (isset($_POST['SignUp'])){

@@ -1,23 +1,24 @@
-console.log('check1'); 
+    console.log('check1'); 
 
-// Function to handle server interaction 
-function submit_registerForm(){
+    // Get the form
     const form = document.getElementById('registerForm');
-
+    // Add an event listener to the form
     form.addEventListener('submit', function(event){
+        // Prevent the default form submission
         event.preventDefault(); 
+        // Get the form data
         const formdata = new FormData(form);
-        console.log('event listner activated');
+
+        // Send the form data to the server
         for(const [key, value] of formdata.entries()){
             console.log(key +' '+ value);
         }
-//backend\php\register.php
         fetch('../../backend/php/register.php',{
             method:'POST',
             body: formdata
     
         })
-    
+        // Get the response from the server
         .then(response => response.text())
         .then(data => {
             document.getElementById('register-message').innerHTML = data;
@@ -27,9 +28,6 @@ function submit_registerForm(){
             console.error('Error: ', error); 
         });
     });
-    console.log('event listner done'); 
+    console.log('check 2'); 
 
-}
 
-console.log('check'); 
-submit_registerForm(); 
