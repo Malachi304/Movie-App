@@ -1,0 +1,1 @@
+// Updates the content of the main conent, based on the selected movie

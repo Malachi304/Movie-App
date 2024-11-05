@@ -10,6 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
             mainContentDiv.innerHTML = httpRequest.responseText;
+            let addMovieForm = document.getElementById('add-movie-form');
+            let addMovieBTN = document.getElementById('add-movie');
+
+
+            if (addMovieForm && addMovieBTN) {
+                addMovieBTN.addEventListener('click', () => {
+                    addMovieForm.style.display = 'block';
+                });
+            } else {
+                console.error('Add Movie Form or Button Element Not Found');
+            }
+
+
         } else {
             console.error("Error loading Page: " + httpRequest.status);
             mainContentDiv.innerHTML = "<p> Failed to load page. </p>";

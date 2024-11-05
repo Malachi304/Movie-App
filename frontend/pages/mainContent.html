@@ -6,8 +6,6 @@
     <title>Main Page</title>
 </head>
 <body>
-    
-    <div id="container">
 
         <h1>Movie Collection</h1>
         <hr>
@@ -17,14 +15,35 @@
         <ul>
             <li id="movie-name">Title: </li>
             <li id="movie-director">Director: </li>
-            <li id="movie-release">Release: </li>
+            <li id="movie-release">Release Year: </li>
             <li id="movie-genre">Genre:</li>
-            <li id="movie-rating">Rating: </li>
+            <li id="movie-rating">Rating (1-10): </li>
         </ul>
 
-        <button id="add-movie">Add Movie</button>
+        <button id="add-movie">Add New Movie</button>
+        <form id="add-movie-form" style="display: none;">
+            <input type="text" id="movie-title">
+            <label for="movie-title">Title: </label><br>
+
+            <input type="text" id="movie-director">
+            <label for="movie-director">Director: </label><br>
+
+            <input type="number" id="movie-release">
+            <label for="movie-release">Release Year: </label><br>
+
+            <input type="text" id="movie-genre">
+            <label for="movie-genre">Genre: </label><br>
+
+            <input type="number" id="movie-rating">
+            <label for="movie-rating">Rating (1-10): </label><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+
         <button id="delete-movie">Delete Movie</button>
         <button id="next-movie">Next Movie</button">
-    </div>
+
+    
 </body>
 </html>
