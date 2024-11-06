@@ -10,13 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
             mainContentDiv.innerHTML = httpRequest.responseText;
+
+            // Add the add movie button
             let addMovieForm = document.getElementById('add-movie-form');
             let addMovieBTN = document.getElementById('add-movie');
+            let submitBtn = document.getElementById('submit-movie');
 
-
-            if (addMovieForm && addMovieBTN) {
-                addMovieBTN.addEventListener('click', () => {
+            if (addMovieForm && addMovieBTN && submitBtn) {
+                addMovieBTN.addEventListener('click', ()=> {
                     addMovieForm.style.display = 'block';
+
+                        submitBtn.addEventListener('click', (event) => {
+                            event.preventDefault();
+                        });
+                    
                 });
             } else {
                 console.error('Add Movie Form or Button Element Not Found');
