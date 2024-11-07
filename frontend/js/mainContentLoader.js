@@ -2,10 +2,27 @@
 // Create a new XMLHttpRequest object
 document.addEventListener("DOMContentLoaded", () => {
     const mainContentDiv = document.getElementById("mainContent");
+    let title = document.getElementById('title');
+    let director = document.getElementById('director');
+    let release = document.getElementById('release');
+    let genre = document.getElementById('genre');
+    let rating = document.getElementById('rating');
 
     // use xmlHttpRequest to get the content of the main page
     let httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", "../pages/mainContent.html");
+
+    let firstMovieHttpRequest = new XMLHttpRequest();
+    // display a random movie initally
+    firstMovieHttpRequest.open('GET', '../../backend/php/nextMovie.php'); // nextMovieHttpRequest.open('GET', '../../php/backend/nextMovie.php');
+    firstMovieHttpRequest.onload = () => {
+        if(firstMovieHttpRequest.status === 200){
+            let data = JSON.parse(firstMovieHttpRequest.responseText);
+            console.log(data);
+        }
+    }
+    firstMovieHttpRequest.send();
+
     // assign the callback function
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
@@ -14,14 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add the add movie button
             let addMovieForm = document.getElementById('add-movie-form');
             let addMovieBTN = document.getElementById('add-movie');
-            let submitBtn = document.getElementById('submit-movie');
+            let submitBTN = document.getElementById('submit-movie');
+            let nextBTN = document.getElementById('next-movie');
 
             // Add an event listener to the add movie button
-            if (addMovieForm && addMovieBTN && submitBtn) {
+            if (addMovieForm && addMovieBTN && submitBTN) {
                 addMovieBTN.addEventListener('click', ()=> {
                     addMovieForm.style.display = 'block';
                         // Add an event listener to the submit button
-                        submitBtn.addEventListener('click', (event) => {
+                        submitBTN.addEventListener('click', (event) => {
                             // Prevent the default form submission (page reload)
                             event.preventDefault();
 
@@ -50,6 +68,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error('Add Movie Form or Button Element Not Found');
             }
 
+            // Add an event listener to the next button
+            nextBTN.addEventListener('click', () =>{
+                let nextMovieHttpRequest = new HttpRequest();
+
+                // Grab next movie from the JSON file via php
+                nextMovieHttpRequest.open('GET', '../../backened/php/nextMovie.php');
+                nextMovieHttpRequest.send();
+            })
+
+
+            // Add an event listener to the previous button
+
+
+            // Add an event listner to the delete button
 
         } else {
             console.error("Error loading Page: " + httpRequest.status);
