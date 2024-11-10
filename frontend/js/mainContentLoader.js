@@ -1,34 +1,56 @@
 
-// Create a new XMLHttpRequest object
+// this function will be called when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
     const mainContentDiv = document.getElementById("mainContent");
-    let title = document.getElementById('title');
-    let director = document.getElementById('director');
-    let release = document.getElementById('release');
-    let genre = document.getElementById('genre');
-    let rating = document.getElementById('rating');
 
     // use xmlHttpRequest to get the content of the main page
     let httpRequest = new XMLHttpRequest();
-    httpRequest.open("GET", "../pages/mainContent.html");
+    httpRequest.open("GET", "../pages/mainContent.html"); // this will open the main page
 
     let firstMovieHttpRequest = new XMLHttpRequest();
-    // display a random movie initally
+    // display a random movie initally when the page loads
     firstMovieHttpRequest.open('GET', '../../backend/php/nextMovie.php'); // nextMovieHttpRequest.open('GET', '../../php/backend/nextMovie.php');
-    firstMovieHttpRequest.onload = () => {
-        if(firstMovieHttpRequest.status === 200){
-            let data = JSON.parse(firstMovieHttpRequest.responseText);
-            console.log(data);
+    firstMovieHttpRequest.onload = () => { // this function will be called when the request is loaded
+        if(firstMovieHttpRequest.status === 200){ // this if statement will check if the request was successful
+            try { // this try statement will try to parse the response text as JSON
+                const contentType = firstMovieHttpRequest.getResponseHeader("content-type");
+                if (contentType && contentType.includes("application/json")) { // this if statement will check if the content type is JSON
+                    let data = JSON.parse(firstMovieHttpRequest.responseText);
+
+                    let title = document.getElementById('title');
+                    let director = document.getElementById('director');
+                    let release = document.getElementById('release');
+                    let genre = document.getElementById('genre');
+                    let rating = document.getElementById('rating');
+
+                    if (title && director && release && genre && rating) { 
+                        title.innerHTML ='Title: ' + data.title;
+                        director.innerHTML ='Director: '+ data.director; 
+                        release.innerHTML ='Release Year: ' + data.year; // Use 'year' instead of 'releaseYear'
+                        genre.innerHTML = 'Genre: ' + data.genre;
+                        rating.innerHTML = 'Rating: ' + data.rating;
+                    } else {
+                        console.error("One or more HTML elements are missing.");
+                    }
+
+                } else { // this else statement will be called if the content type is not JSON
+                    console.error("Expected JSON, but received a different content type.");
+                    console.error("Response text:", firstMovieHttpRequest.responseText);
+                }
+            } catch (error) { // this catch statement will be called if there was an error parsing the response text as JSON
+                console.error("Failed to parse JSON:", error);
+                console.error("Response text:", firstMovieHttpRequest.responseText);
+            }
         }
     }
-    firstMovieHttpRequest.send();
+    firstMovieHttpRequest.send(); // send the request
 
     // assign the callback function
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
             mainContentDiv.innerHTML = httpRequest.responseText;
 
-            // Add the add movie button
+            // 
             let addMovieForm = document.getElementById('add-movie-form');
             let addMovieBTN = document.getElementById('add-movie');
             let submitBTN = document.getElementById('submit-movie');
@@ -58,6 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                console.log(formdata);
                                // Reset the form
                               addMovieForm.reset();
+
+
+                              // send the form data to the server
                            } else {
                                alert('Please fill in all fields');
                            }
@@ -70,10 +95,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add an event listener to the next button
             nextBTN.addEventListener('click', () =>{
-                let nextMovieHttpRequest = new HttpRequest();
+                let nextMovieHttpRequest = new XMLHttpRequest();
 
                 // Grab next movie from the JSON file via php
-                nextMovieHttpRequest.open('GET', '../../backened/php/nextMovie.php');
+                nextMovieHttpRequest.open('GET', '../../backend/php/nextMovie.php');
+                nextMovieHttpRequest.onload = () => {
+                    if(nextMovieHttpRequest.status === 200){
+                        try {// try to parse the response text as JSON
+                            const contentType = nextMovieHttpRequest.getResponseHeader('content-type'); // get the content type
+                            if (contentType && contentType.includes('application/json')) { // check if the content type is JSON
+                                let data = JSON.parse(nextMovieHttpRequest.responseTerm); // parse the response text as JSON
+
+                                let title = document.getElementById('title');
+                                let director = document.getElementById('director');
+                                let release = document.getElementById('release');
+                                let genre = document.getElementById('genre');
+                                let rating = document.getElementById('rating');
+            
+                                if (title && director && release && genre && rating) { 
+                                    title.innerHTML ='Title: ' + data.title;
+                                    director.innerHTML ='Director: '+ data.director; 
+                                    release.innerHTML ='Release Year: ' + data.year; // Use 'year' instead of 'releaseYear'
+                                    genre.innerHTML = 'Genre: ' + data.genre;
+                                    rating.innerHTML = 'Rating: ' + data.rating;
+                                } else {
+                                    console.error("One or more HTML elements are missing.");
+                                }
+                            }
+                        }
+                        catch (error){ // catch if there was an error parsing the response text as JSON
+                            console.error("Failed to parse JSON:", error);
+                            console.error("Response text:", nextMovieHttpRequest.responseText);
+                        }
+                    }
+                }
+
                 nextMovieHttpRequest.send();
             })
 

@@ -1,5 +1,5 @@
-{
-    "movies": [
+
+    [
         {
             "title": "The Dark Knight",
             "year": "2008",
@@ -39,4 +39,3 @@
             "rating": 9.2,
             "director": "Frank Darabont"
         }]
-}
