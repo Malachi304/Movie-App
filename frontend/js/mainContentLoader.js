@@ -104,7 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         try {// try to parse the response text as JSON
                             const contentType = nextMovieHttpRequest.getResponseHeader('content-type'); // get the content type
                             if (contentType && contentType.includes('application/json')) { // check if the content type is JSON
-                                let data = JSON.parse(nextMovieHttpRequest.responseTerm); // parse the response text as JSON
+                                let data = JSON.parse(nextMovieHttpRequest.responseText); // parse the response text as JSON
+                                console.log(data);
 
                                 let title = document.getElementById('title');
                                 let director = document.getElementById('director');
