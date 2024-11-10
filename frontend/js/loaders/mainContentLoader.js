@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
             firstMovieHttpRequest.send(); // send the request
-
             
             let addMovieForm = document.getElementById('add-movie-form');
             let addMovieBTN = document.getElementById('add-movie');
@@ -97,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let nextMovieHttpRequest = new XMLHttpRequest();
 
                 // Grab next movie from the JSON file via php
-                nextMovieHttpRequest.open('GET', '../../backend/php/nextMovie.php');
+                nextMovieHttpRequest.open('GET', '../../../backend/php/nextMovie.php');
                 nextMovieHttpRequest.onload = () => {
                     if(nextMovieHttpRequest.status === 200){
                         try {// try to parse the response text as JSON
