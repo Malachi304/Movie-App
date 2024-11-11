@@ -1,17 +1,13 @@
 import { loadMovie } from "../util/loadMovie.js";
 import { addMovie } from "../util/addMovie.js";
 
-// Movie Index of data from JSON file 
-let currentIndex = 1;
-
 // this function will be called when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
     const mainContentDiv = document.getElementById("mainContent");
-    // use xmlHttpRequest to get the content of the main page
     let httpRequest = new XMLHttpRequest();
-    httpRequest.open("GET", "../pages/mainContent.html"); // this will open the main page
+    httpRequest.open("GET", "../pages/mainContent.html"); // this will open the main page once the DOM is fully loaded
 
-    // assign the callback function
+    // Assign the callback function 
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
             mainContentDiv.innerHTML = httpRequest.responseText;
@@ -24,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let rating = document.getElementById('rating');
 
             // load the first movie
-            loadMovie(title, director, release, genre, rating, currentIndex);
+            loadMovie(title, director, release, genre, rating);
             
             // Grab the HTML elements from the DOM that will be used to add a movie
             let addMovieForm = document.getElementById('add-movie-form');
@@ -39,9 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add an event listener to the next button to load the next movie
             nextBTN.addEventListener('click', () =>{
-                loadMovie(title, director, release, genre, rating, currentIndex);
+                loadMovie(title, director, release, genre, rating);
             });
-
 
             // Add an event listener to the previous button
 
@@ -58,7 +53,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     httpRequest.send();
 });
-
-function updateMovieIndex(index){
-    currentIndex = index;
-}

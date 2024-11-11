@@ -1,6 +1,7 @@
 
+
 // Add an event listener to the next button
-export function loadMovie(nextBTN, title, director, release, genre, rating, updateIndex) {
+export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm) {
         let nextMovieHttpRequest = new XMLHttpRequest();
 
         // Grab next movie from the JSON file via php
@@ -12,16 +13,8 @@ export function loadMovie(nextBTN, title, director, release, genre, rating, upda
                     if (contentType && contentType.includes('application/json')) { // check if the content type is JSON
                         let data = JSON.parse(nextMovieHttpRequest.responseText); // parse the response text as JSON
                         console.log(data);
-    
-                        if (title && director && release && genre && rating) { 
-                            title.innerHTML ='Title: ' + data.title;
-                            director.innerHTML ='Director: '+ data.director; 
-                            release.innerHTML ='Release Year: ' + data.year; // Use 'year' instead of 'releaseYear'
-                            genre.innerHTML = 'Genre: ' + data.genre;
-                            rating.innerHTML = 'Rating: ' + data.rating;
-                        } else {
-                            console.error("One or more HTML elements are missing.");
-                        }
+                        displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, data[0]);
+
                     }
                 }
                 catch (error){ // catch if there was an error parsing the response text as JSON
@@ -32,4 +25,18 @@ export function loadMovie(nextBTN, title, director, release, genre, rating, upda
         }
 
         nextMovieHttpRequest.send();
+}
+
+function displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, movie){
+
+    if (title && director && release && genre && rating) { 
+        titleElm.innerHTML ='Title: ' + movie.title;
+        directorElm.innerHTML ='Director: '+ movie.director; 
+        releaseElm.innerHTML ='Release Year: ' + movie.year;
+        genreElm.innerHTML = 'Genre: ' + movie.genre;
+        ratingElm.innerHTML = 'Rating: ' + movie.rating;
+    } else {
+        console.error("One or more HTML elements are missing.");
+    }
+
 }
