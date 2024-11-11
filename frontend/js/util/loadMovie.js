@@ -1,4 +1,5 @@
-
+let data = []; // module scope variable to store the JSON data
+let index = 0; // module scope variable to store the index of the current movie
 
 // Add an event listener to the next button
 export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm) {
@@ -11,7 +12,7 @@ export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm
                 try {// try to parse the response text as JSON
                     const contentType = nextMovieHttpRequest.getResponseHeader('content-type'); // get the content type
                     if (contentType && contentType.includes('application/json')) { // check if the content type is JSON
-                        let data = JSON.parse(nextMovieHttpRequest.responseText); // parse the response text as JSON
+                        data = JSON.parse(nextMovieHttpRequest.responseText); // parse the response text as JSON
                         console.log(data);
                         displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, data[0]);
 
