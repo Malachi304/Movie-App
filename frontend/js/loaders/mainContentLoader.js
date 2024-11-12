@@ -1,4 +1,4 @@
-import { loadMovie } from "../util/loadMovie.js";
+import { loadMovie } from "./loadMovie.js";
 import { addMovie } from "../util/addMovie.js";
 
 // this function will be called when the DOM is fully loaded
@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add an event listener to the previous button
 
             // Add an event listner to the delete button
+
+            // Add an event listner to show all 
+            
+    
+
 
         } else {
             console.error("Error loading Page: " + httpRequest.status);

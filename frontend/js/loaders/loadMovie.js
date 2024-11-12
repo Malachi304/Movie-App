@@ -43,3 +43,9 @@ function displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, mo
     }
 
 }
+// displays all movies
+function displayAllMovies(data){
+
+    let httpRequest = new XMLHttpRequest();
+
+}

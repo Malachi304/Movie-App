@@ -20,3 +20,12 @@
     width: 100vw;
 }
 
+#main-container #right-container{
+    border: 2px solid black;
+    margin-right: 5px;
+}
+
+#main-container #left-container{
+    margin-left: 5px;
+}
+

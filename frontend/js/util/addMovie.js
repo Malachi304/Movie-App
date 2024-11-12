@@ -24,16 +24,34 @@ export function addMovie(addMovieForm, addMovieBTN, submitBTN) {
                                    console.log(formdata);
                                    // Reset the form
                                   addMovieForm.reset();
-    
-    
+        
                                   // send the form data to the server
-                               } else {
+                                  let addRequest = new XMLHttpRequest();
+                                  addRequest.open('POST', "../../backend/php/addMovie.php");
+                                
+                                  addRequest.onload = () => {
+                                    if (addRequest.status === 200) {
+                                        try{
+                                            let response = JSON.parse(addRequest.responseText);
+                                            console.log("Rresponse: " + response);
+                                        } 
+                                        catch (error){ // catch if there was an error parsing the response text as JSON
+                                            console.error("Failed to parse JSON:", error); 
+                                        }
+                                    }
+                                    else{ // if there was an error with the request
+                                        console.error("There was a network error.", addRequest.status);
+                                    }
+
+                                    addRequest.send();
+                                  }
+                               } else { // If fields from the form are not filled
                                    alert('Please fill in all fields');
                                }
     
                             });
                 } else {
-                    console.error('Add Movie Form or Button Element Not Found');
+                    console.error('Add Movie Form or Button Element Not Found'); // if the add movie form or button element is not found
                 }
 }
 
