@@ -1,5 +1,4 @@
 import { loadMovie } from "./loadMovie.js";
-import { addMovie } from "../util/addMovie.js";
 
 // this function will be called when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,17 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // load the first movie
             loadMovie(title, director, release, genre, rating);
             
-            // Grab the HTML elements from the DOM that will be used to add a movie
-            let addMovieForm = document.getElementById('add-movie-form');
-            let addMovieBTN = document.getElementById('add-movie');
-            let submitBTN = document.getElementById('submit-movie');
-
-            addMovieBTN.addEventListener('click', ()=> {
-            addMovie(addMovieForm, addMovieBTN, submitBTN);
-            });
 
             let nextBTN = document.getElementById('next-movie');
-
             // Add an event listener to the next button to load the next movie
             nextBTN.addEventListener('click', () =>{
                 loadMovie(title, director, release, genre, rating);
@@ -42,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add an event listner to the delete button
 
-            // Add an event listner to show all 
-            
-    
+            // Add an event listner to show all movies
 
 
         } else {
