@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     // Selecting the div where content will load
-    const currentMovieDiv = document.getElementById('addtMovie');
+    const currentMovieDiv = document.getElementById('addMovie');
    // console.log(currentMovieDiv)
 
     let httpRequest = new XMLHttpRequest(); 
@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if(httpRequest.status === 200){
         currentMovieDiv.innerHTML = httpRequest.responseText;
 
+        // Grab the HTML elements from the DOM that will be used to add a movie
+        let addMovieForm = document.getElementById('add-movie-form');
+        let addMovieBTN = document.getElementById('add-movie');
+        let submitBTN = document.getElementById('submit-movie');
+
+        addMovieForm.addEventListener('submit', (event)=> {
+            event.preventDefault();
+        });
 
         }
         else{
@@ -26,3 +34,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     httpRequest.send();
 })
+
+   
