@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Grab the HTML elements from the DOM that will be used to add a movie
         let addMovieForm = document.getElementById('add-movie-form');
-        let addMovieBTN = document.getElementById('add-movie');
-        let submitBTN = document.getElementById('submit-movie');
 
         addMovieForm.addEventListener('submit', (event)=> {
             event.preventDefault();
