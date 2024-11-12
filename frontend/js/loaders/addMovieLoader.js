@@ -1,10 +1,12 @@
+import { addMovie } from "../util/addMovie.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     // Selecting the div where content will load
     const currentMovieDiv = document.getElementById('currentMovie');
    // console.log(currentMovieDiv)
 
     let httpRequest = new XMLHttpRequest(); 
-    httpRequest.open("GET", "../pages/currentMovie.html");
+    httpRequest.open("GET", "../pages/addMovie.html");
 
     httpRequest.onload = () => {
         if(httpRequest.status === 200){
