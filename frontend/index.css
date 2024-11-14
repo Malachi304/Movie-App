@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    
 }
 
 #top-container{grid-area: top;}
@@ -15,17 +16,18 @@
     "left left left right"
     "bottom bottom bottom bottom";
 
-    background-color: #E5E5E8;
+    background-color: #161419;
     height: 100vh;
     width: 100vw;
 }
 
 #main-container #right-container{
-    border: 2px solid black;
     margin-right: 5px;
+    background-color: #B3B4BD;
 }
 
 #main-container #left-container{
     margin-left: 5px;
+    background-color: #B3B4BD;
 }
 
