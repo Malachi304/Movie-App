@@ -19,20 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
             let rating = document.getElementById('rating');
 
             // load the first movie
-            loadMovie(title, director, release, genre, rating);
-            
+            loadMovie(title, director, release, genre, rating, false);
 
             let nextBTN = document.getElementById('next-movie');
             // Add an event listener to the next button to load the next movie
-            nextBTN.addEventListener('click', () =>{
-                loadMovie(title, director, release, genre, rating);
-            });
-
-            // Add an event listener to the previous button
+            nextBTN.addEventListener('click', () =>loadMovie(title, director, release, genre, rating,false));
 
             // Add an event listner to the delete button
 
-            // Add an event listner to show all movies
+            let allMoviesBTN = document.getElementById('all-movies');
+            allMoviesBTN.addEventListener('click', () => loadMovie(title, director, release, genre, rating, true));            
 
 
         } else {

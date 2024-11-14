@@ -1,1 +1,3 @@
-SELECT * FROM users
+CREATE TABLE MovieCollectio (
+    id SERIAL PRIMARY KEY,
+);

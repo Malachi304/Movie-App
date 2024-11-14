@@ -1,8 +1,8 @@
 let data = []; // module scope variable to store the JSON data
-let index = 0; // module scope variable to store the index of the current movie
+let index = -1; // module scope variable to store the index of the current movie
 
 // Add an event listener to the next button
-export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm) {
+export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm,allMovies) {
         let nextMovieHttpRequest = new XMLHttpRequest();
 
         // Grab all movies from the JSON file via php
@@ -13,11 +13,17 @@ export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm
                     const contentType = nextMovieHttpRequest.getResponseHeader('content-type'); // get the content type
                     if (contentType && contentType.includes('application/json')) { // check if the content type is JSON
                         data = JSON.parse(nextMovieHttpRequest.responseText); // parse the response text as JSON
-                        displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, data[index]);
+                        
+                        if(allMovies === true){
+                            displayAllMovies(data);
+                            return;
+                        }
+
+                        index += 1;
                         if (index === data.length - 1) {
                             index = 0;
                         }
-                        index += 1;
+                        displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, data[index]);                        
                     }
                 }
                 catch (error){ // catch if there was an error parsing the response text as JSON
@@ -29,6 +35,8 @@ export function loadMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm
 
         nextMovieHttpRequest.send();
 }
+
+
 
 function displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, movie){
 
@@ -45,7 +53,6 @@ function displayMovie(titleElm, directorElm, releaseElm, genreElm, ratingElm, mo
 }
 // displays all movies
 function displayAllMovies(data){
-
-    let httpRequest = new XMLHttpRequest();
-
+    let allMoviesDiv = document.getElementById('all-movies-list');
+    allMoviesDiv.innerHTML = data.map(movie => movie.title).join("<br>");
 }

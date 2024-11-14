@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         addMovieForm.addEventListener('submit', (event)=> {
             event.preventDefault();
+
+            
         });
 
         }
