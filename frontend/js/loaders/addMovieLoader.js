@@ -16,8 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         addMovieForm.addEventListener('submit', (event)=> {
             event.preventDefault();
-
             
+            // Get the form data
+            const formdata = new FormData(event.target);
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '../../backend/php/addMovie.php');
+
+            xhr.onload = () => {
+                if(xhr.status ===200){
+                    console.log("Output:"+ formdata);
+
+                }
+            }
+            xhr.onerror = () => { // if there was an error with the request
+                console.error("There was a network error");
+            }
+            xhr.send(formdata);
         });
 
         }
