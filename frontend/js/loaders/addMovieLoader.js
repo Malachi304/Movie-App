@@ -21,11 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const formdata = new FormData(event.target);
 
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', '../../backend/php/addMovie.php');
+            xhr.open('POST', '../../backend/php/addMovie.php', true);
 
             xhr.onload = () => {
                 if(xhr.status ===200){
-                    console.log("Output:"+ formdata);
+                    for(let [key, value] of formdata.entries()){
+                        //console.log(`${key}: ${value}`);
+                    }
 
                 }
             }
