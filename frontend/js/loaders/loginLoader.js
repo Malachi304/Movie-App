@@ -1,1 +1,0 @@
-const loginContentDiv = document.getElementById("loginContent");
