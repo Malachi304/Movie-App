@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<style>
+    button{
+        background-color: #050A44;
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid #050A44;
+    }
+    button:hover{
+        background-color: #2C2E3A;
+        color: #F1F1F1;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #all-movies-list{
+        padding: 10px;
+
+    }
+    #collection-container{
+        padding: 10px;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        padding: 2px;
+    }
+</style>
+<body>
+
+        <h1>Movie Collection</h1>
+        <hr>
+
+        <div id="collection-container">
+
+            <ul>
+                <li id="title">Title: </li>
+                <li id="director">Director: </li>
+                <li id="release">Release Year: </li>
+                <li id="genre">Genre:</li>
+                <li id="rating">Rating (1-10): </li>
+            </ul>
+
+            <button id="delete-movie">Delete Movie</button>
+            <button id="next-movie">Next Movie</button>
+            <button id="all-movies">All Movies</button>
+        </div>
+
+        <hr>
+
+
+        <div id="all-movies-container">
+            <div id="all-movies-list"></div>
+        </div>
+
+    
+</body>
+</html>
