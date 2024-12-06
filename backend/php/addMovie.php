@@ -32,6 +32,23 @@ else{
     ];
 
     # Check if the movie already exists 
+    $movieExists = false;
+    foreach($movies as $movie){
+        if($movie['title'] === $title && $movie['year'] === $year){
+            $movieExists = true;
+            break;
+        }
+    }
+
+    if($movieExists){
+        die("Movie already exists");
+    }
+    else{
+        $movies[] = $newMovie;
+        $JSONfile = json_encode($movies);
+        file_put_contents('../data.JSON', $JSONfile);
+    }
+
 
 
 }
@@ -41,6 +58,17 @@ else{
 # The ? will be replaced with the values from the array 
 $statement = $conn->prepare("INSERT INTO moviecollection (title, director, year, genre, rating) VALUES (?, ?, ?, ?, ?)");
 
+if (!$statement) {
+    die('Prepare failed: ' . $conn->error);
+}
+
+# Bind the parameters to the statement
+$statement->bind_param("ssiss", $title, $director, $year, $genre, $rating);
+
+# Execute the statement
+if (!$statement->execute()) {
+    die('Execute failed: ' . $statement->error);
+}
 
 $conn->close();
 ?>

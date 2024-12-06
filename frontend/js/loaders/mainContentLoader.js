@@ -1,4 +1,5 @@
 import { loadMovie } from "./loadMovie.js";
+import { deleteMovie } from "./deleteMovie.js";
 
 // this function will be called when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
             nextBTN.addEventListener('click', () =>loadMovie(title, director, release, genre, rating,false));
 
             // Add an event listner to the delete button
+            let deleteBTN = document.getElementById('delete-movie');
+            deleteBTN.addEventListener('click', () => deleteMovie(title));
 
             let allMoviesBTN = document.getElementById('all-movies');
             allMoviesBTN.addEventListener('click', () => loadMovie(title, director, release, genre, rating, true));            
