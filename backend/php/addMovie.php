@@ -31,7 +31,7 @@ else{
         'rating' => $rating
     ];
 
-    # Check if the movie already exists (Yes this is re)
+    # Check if the movie already exists 
 
 
 }

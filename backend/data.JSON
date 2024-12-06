@@ -38,4 +38,43 @@
             "genre": "Drama",
             "rating": 9.2,
             "director": "Frank Darabont"
-        }]
+        },
+        {
+            "title": "Zootopia",
+            "year": "2016",
+            "genre": "Family",
+            "rating": 5.0,
+            "director": "Byron Howard"
+        },
+
+        {
+            "title": "The Batman",
+            "year": "2022",
+            "genre": "Action, Crime, Drama",
+            "rating": 8.3,
+            "director": "Matt Reeves"
+        },
+        {
+            "title": "Avatar: The Way of Water",
+            "year": "2022",
+            "genre": "Action, Adventure, Fantasy",
+            "rating": 7.8,
+            "director": "James Cameron"
+        },
+        {
+            "title": "Spider-Man: No Way Home",
+            "year": "2021",
+            "genre": "Action, Adventure, Science Fiction",
+            "rating": 8.9,
+            "director": "Jon Watts"
+        },
+        {
+            "title": "Black Panther: Wakanda Forever",
+            "year": "2022",
+            "genre": "Action, Adventure, Drama",
+            "rating": 7.0,
+            "director": "Ryan Coogler"
+        }
+        
+   
+    ]
