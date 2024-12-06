@@ -1,33 +1,20 @@
-# Movie sharing social platform
 
-### Details
-This is a web database management project for my CSCI 130 course (Fall, 2024). 
-The project utalizes JS, HTML/CSS, PHP, and SQL for an album management social
-platform. 
+TO RUN:
 
-I decided to not utalize any large frameworks in order to get experience with a vanilla techstack. 
-There is a similar project that I have forked, which utalizes a larger/ more mordern techstack. This 
-is also being worked on for a class. 
+ADD file to htdocs
 
-### Dependencies
-Php, mysql, python
+START xampp
 
-### Enviroment
-Visual Std Code, mysql workbench, XAMPP (apache) ,extensions: mysql tools
+NAVIAGTE to browser enter : http://localhost/Movie-Browser-APP
 
-### Base Functionality
-The aim is to utalize a music API, to store user selected movie in an sql database. Users will be able to store/share their favorite (Or least favorite) movies to their page, and give their own personal reviews and opinions. 
+NAVIAGTE to 'frontend' -> 'pages'
 
-Users will be able to create accounts, and maintain their pages, with an about me section, a list of movies they've reviewed, along with their current favorite movies.
+IMPORT NOTE ON DATABASE: 
 
-While the main aim is database management, I'm also striving to ensure best security practices in terms of authentication, and user data. 
+If you were directly sent the project folder, the config file is included 
+which will connect you to the database. 
 
-Furthermore, while styling is not a major component, I'm aiming to keep everything that is styled responsive and user-friendly. 
-
-### Inspiration
-
-
-### Future
-I'd like to eventually expand this to include songs as well. Users will eventually be able to have a friends list, and be able to share collections of their 
-recent finds/listens in a post similar to instagram, with comments and sharing being a component. 
-
+If the database won't connect for whatever reason, or you are pulling from github,
+all the data that is saved to the database (on my end), is also saved locally in
+the data.JSON file (backend/data.JSON). There is a script called JSON_to_DB.php in the 
+backened which will add this JSON data to your database if you import your own configuration file.
