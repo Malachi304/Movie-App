@@ -1,5 +1,9 @@
 import { loadMovie } from "./loadMovie.js";
-import { deleteMovie } from "./deleteMovie.js";
+import { deleteMovie } from "./loadMovie.js";
+import { displayAllMovies } from "./loadMovie.js";
+import { clearAllMovies } from "./loadMovie.js";
+import {sort} from "./loadMovie.js";
+
 
 // this function will be called when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,10 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add an event listner to the delete button
             let deleteBTN = document.getElementById('delete-movie');
-            deleteBTN.addEventListener('click', () => deleteMovie(title));
-
+            deleteBTN.addEventListener('click', () => deleteMovie(title.textContent.replace("Title: ", "")));
+            
             let allMoviesBTN = document.getElementById('all-movies');
-            allMoviesBTN.addEventListener('click', () => loadMovie(title, director, release, genre, rating, true));            
+            allMoviesBTN.addEventListener('click', () => displayAllMovies());            
+
+            // set innerhtml 'all-movies' to empty
+            let clear = document.getElementById('clear');
+            clear.addEventListener('click', () => clearAllMovies());
+
+            let sortBTN = document.getElementById('sort_it');
+            sortBTN.addEventListener('click', () => sort());
 
 
         } else {

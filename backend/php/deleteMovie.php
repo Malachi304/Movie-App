@@ -2,37 +2,41 @@
 
 require 'config.php';
 
-# Delete the movie from the database
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $movieName = $_POST['title'];
-    $query = "DELETE FROM moviecollection WHERE title = $movieName";
-    $result = mysqli_query($conn, $query);
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postData = json_decode(file_get_contents('php://input'), true);
+    $movieName = $postData['title'];    
 
-# Delete the movie from the JSON file
-$JSONfile = file_get_contents('../data.JSON');
-
-# Decode the JSON data into an php array
-$movies = json_decode($JSONfile, true);
-
-if ($movies === null) {
-    die("JSON data could not be decoded");
-}
-else{
-    # Delete the movie from the array
-    $index = array_search($movieName, array_column($movies, 'title'));
-    if ($index !== false) {
-        unset($movies[$index]);
+    // Check if title is received correctly
+    if (empty($movieName)) {
+        echo json_encode(["error" => "Title is empty."]);
+        exit;
     }
-    # Encode the array back into JSON
-    $newJSON = json_encode($movies);
-    file_put_contents('../data.JSON', $newJSON);
+
+    header('Content-Type: application/json');
+
+    // Continue with the deletion process
+    $query = "DELETE FROM moviecollection WHERE title = ?";
+    $stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt === false) {
+        die(json_encode(["error" => "Error preparing the statement: " . mysqli_error($conn)]));
+    }
+
+    mysqli_stmt_bind_param($stmt, 's', $movieName);
+    $result = mysqli_stmt_execute($stmt);
+
+    // Check if the movie was actually deleted (affected rows > 0)
+    if ($result && mysqli_stmt_affected_rows($stmt) > 0) {
+        echo json_encode(["message" => "Movie deleted successfully."]);
+    } else {
+        // If no rows were affected, the movie wasn't found or already deleted
+        echo json_encode(["error" => "Movie not found or already deleted."]);
+        http_response_code(404); // Not Found
+    }
+
+    mysqli_stmt_close($stmt);
+    $conn->close();
+} else {
+    echo json_encode(["error" => "Invalid request method."]);
+    http_response_code(405); // Method Not Allowed
 }
-
-if (!$result) {
-    echo "Error deleting movie: " . mysqli_error($conn);
-}
-
-mysqli_close($conn);
-
-?>

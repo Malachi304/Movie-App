@@ -25,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             xhr.onload = () => {
                 if(xhr.status ===200){
-                    for(let [key, value] of formdata.entries()){
-                        //console.log(`${key}: ${value}`);
-                    }
 
+                    console.log(xhr.responseText);
                 }
             }
             xhr.onerror = () => { // if there was an error with the request

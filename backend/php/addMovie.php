@@ -1,5 +1,5 @@
 <?php
-require '../config.php';
+require 'config.php';
 
 # We get the data from the request
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
